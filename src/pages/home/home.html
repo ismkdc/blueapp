@@ -1,0 +1,50 @@
+
+<ion-content fullscreen>
+  <ion-card *ngFor="let item of items">
+  <ion-item>
+            <ion-avatar item-left>
+              <img src= "{{ item.UserProfileImage }}" />
+            </ion-avatar>
+            <h2> {{ item.Username }}</h2>
+            <p>{{ item.Date }}</p>
+             <ion-icon item-right name="chatbubbles" (click)="msg(item.UserId, item.Username)"></ion-icon>
+     
+          </ion-item>
+          
+          <ion-card-content>
+            {{ item.Title }}
+          </ion-card-content>
+          <ion-item>
+          <img src= "{{ item.ImageUrl }}">
+          </ion-item>
+
+          <ion-item>
+          	<ion-icon item-left name="school"></ion-icon>
+          	<p item-left>{{ item.Department }}</p>
+                     <ion-icon item-right name="heart"></ion-icon>
+          </ion-item>
+
+         <!-- <ion-row>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="thumbs-up"></ion-icon>
+                <div> {{ item.LikeCount }} Beğeni</div>
+              </button>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-left clear small>
+                <ion-icon name="text"></ion-icon>
+                <div> {{ item.CommentCount }} Yorum</div>
+              </button>
+            </ion-col>
+            <ion-col center text-center>
+              <ion-note>
+                {{ item.Time }}
+              </ion-note>
+            </ion-col>
+          </ion-row>-->
+  </ion-card>
+
+ 
+  
+</ion-content>

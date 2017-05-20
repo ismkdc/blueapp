@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-navbar color="dark">
+        <ion-title>
+            Mesajlar
+        </ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding style="background-color: #2F373F;">
+    <ion-list style="border-bottom: none !important;">
+         <div *ngFor="let item of items">
+        <ion-item-sliding style="background: transparent;" (click)="pushMessage(item.Id)">
+            <ion-item style="background:transparent;">
+                <ion-avatar item-left>
+                    <img src="{{item.ProfileImgUrl}}">
+                </ion-avatar>
+                <h2>{{item.Name}}</h2>
+                <h3 style="color: gray;">{{item.Message}}</h3>
+                <ion-icon item-right name="arrow-forward" color="secondary"></ion-icon>
+            </ion-item>
+            <ion-item-options>
+                <button danger>
+                    <ion-icon name="trash"></ion-icon>
+                    Sil
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+         </div>
+
+
+    </ion-list>
+</ion-content>

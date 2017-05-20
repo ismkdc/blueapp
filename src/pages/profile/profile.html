@@ -1,0 +1,72 @@
+<ion-content fullscreen class="bg">
+    <ion-card>
+<ion-item no-lines style="background-color: transparent; border: none !important;">
+<ion-row>
+  <ion-col>
+   <button style=" border-color: transparent;
+    background: none;
+    box-shadow: none;" ion-button default  icon-only icon-center>
+      <ion-icon name='arrow-back' color="book"  is-active="true"></ion-icon>
+    </button>
+      </ion-col>
+<ion-col center text-center item-center>
+<ion-avatar item-center style="padding-top: 10%; ">
+<img src="{{ profilephoto }}">
+</ion-avatar>
+<h2 style="font-family: 'Helvetica'; color: white; ">{{ a }}</h2>
+<p style="opacity: 0.9 !important;"   >{{ username }}</p>
+
+</ion-col>
+<ion-col>
+<button  (click)="logout()" ion-button default icon-only style="float: right !important ;border-color: transparent; background: none; box-shadow: none;align-items: right !important ;">
+      <ion-icon name='settings' color="book" is-active="true"></ion-icon>
+    </button>
+</ion-col>
+</ion-row>
+</ion-item>
+  <ion-segment [(ngModel)]="pet" color="book" class="tabs">
+     <ion-segment-button value="selling">
+      <ion-icon name="cart"></ion-icon>
+    </ion-segment-button>
+     <ion-segment-button value="favorite">
+      <ion-icon name="heart"></ion-icon>
+    </ion-segment-button>
+  
+  </ion-segment>
+  
+
+  <div [ngSwitch]="pet">
+    <ion-list *ngSwitchDefault no-lines>
+      <div *ngFor="let item of items">
+      <ion-item style="background-color: transparent; color: white !important;
+	">
+        <ion-thumbnail  item-left>
+          <img  src="{{item.ImageUrl}}" style="border-radius: 10px;">
+        </ion-thumbnail>
+        <ion-row  item-left>
+        <ion-col>
+        <h2>{{item.Title}}</h2>
+        </ion-col>
+        </ion-row>
+      
+        <button  item-right ion-button round color="book">Kaldır</button>
+      
+      </ion-item>
+ 
+      </div>
+    </ion-list>
+         
+   
+    <ion-list *ngSwitchCase="'favorite'">
+<ion-item style="background-color: transparent; color: white !important;
+    ">
+          kuzu
+        
+          <button  item-right ion-button round color="book">Kaldır</button>
+        
+        </ion-item>
+      </ion-list>
+    
+    </div>
+    </ion-card>
+</ion-content>

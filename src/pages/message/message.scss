@@ -1,0 +1,13 @@
+page-message {
+    h2 {
+        color: #c2c2c2;
+    }
+    .md ion-list>.item:last-child,
+    .md ion-list>.item-wrapper:last-child .item,
+    .wp ion-list>.item:last-child,
+    .wp ion-list>.item-wrapper:last-child .item,
+    .ios ion-list>.item:last-child,
+    .ios ion-list>.item-wrapper:last-child .item {
+        border-bottom: none;
+    }
+}

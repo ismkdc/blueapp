@@ -1,0 +1,41 @@
+<!--
+  Generated template for the Signup page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Kayıt ol</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="back" scroll="false">
+<ion-list>
+
+ <ion-row>
+<ion-item style="background-color: transparent; " no-lines>
+  <ion-input type="text" placeholder="email" [(ngModel)] = "newcreds.email"></ion-input>
+</ion-item>
+</ion-row>
+       <ion-row>
+<ion-item style="background-color: transparent; " no-lines>
+  <ion-input type="password" placeholder="parola" [(ngModel)] = "newcreds.password"></ion-input>
+</ion-item>
+</ion-row>
+       <ion-row>
+<ion-item style="background-color: transparent; " no-lines>
+  <ion-input type="text" placeholder="ad soyad" [(ngModel)] = "newcreds.name"></ion-input>
+</ion-item>
+</ion-row>
+ <ion-row>
+<ion-item style="background-color: transparent; " no-lines>
+  <ion-input type="text" placeholder="bölüm" [(ngModel)] = "newcreds.department"></ion-input>
+</ion-item>
+</ion-row>
+  </ion-list>
+  <button class="center" ion-button (click)="register(newcreds)">Kayıt Ol</button>
+</ion-content>

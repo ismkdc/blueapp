@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Camera</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  
+      <ion-card>
+              <img [src]="current_image" *ngIf="current_image" /> 
+      </ion-card>
+  
+  <p>
+    <button ion-button round icon-only block (click)="takePhoto()">
+      Fotoğraf Çek!
+    </button>
+     <button ion-button round icon-only block (click)="pickImage()">
+      Galeriden Seç!
+    </button>
+  </p>
+</ion-content>

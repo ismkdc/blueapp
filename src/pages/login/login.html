@@ -1,0 +1,22 @@
+
+
+<ion-content class="back" scroll="false">
+ <ion-list>
+     <img src="assets/images/logo.png" class="logo">
+ <ion-row>
+<ion-item style="background-color: transparent; " no-lines>
+  <ion-input type="text" placeholder="email" [(ngModel)] = "usercreds.email"></ion-input>
+</ion-item>
+</ion-row>
+<ion-row>
+<ion-item style="background-color: transparent; " no-lines>
+  <ion-input type="password" placeholder="parola" [(ngModel)] = "usercreds.password"> </ion-input>
+</ion-item>
+</ion-row>
+
+  </ion-list>
+  <ion-row class="center">
+  <button class="button_color" ion-button (click)="login(usercreds)">Giriş</button>
+  <button class="button_color" ion-button (click)="signup()">Kayıt Ol</button>
+  </ion-row>
+</ion-content>
