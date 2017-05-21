@@ -21,9 +21,7 @@ usercreds = {
         };
 
   constructor(public navCtrl: NavController, public authservice: AuthService,private Alert: AlertController,public loadingCtrl: LoadingController) {
-  window.localStorage.setItem('raja', 'f886a79bf8f8b8807fdf50efc8e062ee');
-        this.navCtrl.setRoot(TabsPage);
-       
+    
   }
 
 login(user) {
@@ -33,8 +31,12 @@ login(user) {
     loading.present();
         this.authservice.authenticate(user).then(data => {
             if(data) {
+                window.localStorage.setItem('username',this.usercreds.email);
+                window.localStorage.setItem('password',this.usercreds.password);
+                this.authservice.isLoggedin = true;
                 this.navCtrl.setRoot(TabsPage);
                 loading.dismiss();
+                
             }
             else{
                  loading.dismiss();

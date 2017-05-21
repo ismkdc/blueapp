@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, ActionSheetController,ToastController } from 'ionic-angular';
+import { NavController, LoadingController, ActionSheetController,ToastController,AlertController } from 'ionic-angular';
 import {Http, Headers, RequestOptions } from '@angular/http';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { AuthService } from "../login/authservice";
+import { LoginPage } from "../login/login";
+
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html'
@@ -12,10 +15,13 @@ public favItems:any;
 username:string;
 profilephoto:string;
 ppDefault = "../assets/images/placeholder.png"
-  constructor(public navCtrl: NavController, public http: Http,public loadingCtrl: LoadingController, public actionSheetCtrl: ActionSheetController, public camera: Camera,public toastCtrl: ToastController) {
+  constructor(public navCtrl: NavController, public http: Http,public loadingCtrl: LoadingController, public actionSheetCtrl: ActionSheetController, public camera: Camera,public toastCtrl: ToastController,public authservice: AuthService,public alertCtrl:AlertController) {
    
   }
   ionViewDidLoad(){
+    this.getData();
+  }
+  getData(){
     let loading = this.loadingCtrl.create({
     spinner: 'crescent'
   });
@@ -151,7 +157,7 @@ this.http.get('http://tukasservice.azurewebsites.net/api/user/getinfo?token='+to
     loading.present();
         var headers = new Headers();
         headers.append('Content-Type', 'application/json');
-            this.http.post('http://tukasservice.azurewebsites.net/api/user/update/profilephoto', creds, {headers: headers}).subscribe(data => {
+            this.http.post('http://tukasservice.azurewebsites.net/api/user/updateprofilephoto', creds, {headers: headers}).subscribe(data => {
             console.log(data.json().Result);
                 if((data.json().Result.indexOf("success") >= 0)){
                    
@@ -181,6 +187,82 @@ this.http.get('http://tukasservice.azurewebsites.net/api/user/getinfo?token='+to
             });
       
 
+    }
+
+    //remove product or favorite product
+    remove(id,type){
+      var token = window.localStorage.getItem('raja');
+        let loading = this.loadingCtrl.create({
+    spinner: 'crescent'
+  });
+    loading.present();
+        var headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+            this.http.get('http://tukasservice.azurewebsites.net/api/product/'+type+'?token='+token+'&id='+id, {headers: headers}).subscribe(data => {
+            console.log(data.json().Result);
+                if((data.json().Result.indexOf("success") >= 0)){
+                    /*let toast = this.toastCtrl.create({
+    message: 'Profil fotoğrafı güncellendi !',
+    duration: 3000,
+    position: 'bottom'
+  }); */
+  this.getData();
+  loading.dismiss();
+  //toast.present();
+                }
+                else{
+                   let toast = this.toastCtrl.create({
+    message: 'Ürün kaldırılamadı !',
+    duration: 3000,
+    position: 'bottom'
+  });
+  loading.dismiss();
+  toast.present();
+  
+
+                }
+                    
+            });
+
+    }
+    settings() {
+
+         let actionSheet = this.actionSheetCtrl.create({
+     title: 'Nereye gidiyorsun :(',
+     buttons: [
+       {
+         text: 'Çıkış yap',
+        role: 'destructive',
+         handler: () => {
+         this.authservice.logout();
+        this.navCtrl.setRoot(LoginPage);
+         }
+       },
+       {
+         text: 'Hakkında',
+         handler: () => {
+        let alert = this.alertCtrl.create({
+        title: 'Blue App',
+        subTitle: 'Bu uygulama İsmail Kundakcı tarafından geliştirilmiştir.',
+        buttons: ["Tamam"]
+    })
+   
+        alert.present();
+         }
+       },
+       {
+         text: 'İptal',
+         role: 'cancel',
+         handler: () => {
+         
+         }
+       }
+     ]
+   });
+
+   actionSheet.present();
+
+        
     }
 
 }
