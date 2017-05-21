@@ -24,7 +24,7 @@
                 </ion-col>
             </ion-row>
         </ion-item>
-        <ion-segment [(ngModel)]="pet" color="book" class="tabs">
+        <ion-segment [(ngModel)]="segment" color="book" class="tabs">
             <ion-segment-button value="selling">
                 <ion-icon name="cart"></ion-icon>
             </ion-segment-button>
@@ -35,9 +35,9 @@
         </ion-segment>
 
 
-        <div [ngSwitch]="pet">
+        <div [ngSwitch]="selling">
             <ion-list *ngSwitchDefault no-lines>
-                <div *ngFor="let item of items">
+                <div *ngFor="let item of sellingItems">
                     <ion-item style="background-color: transparent; color: white !important;">
                         <ion-thumbnail item-left>
                             <img src="{{item.ImageUrl}}" style="border-radius: 10px;">
@@ -50,10 +50,15 @@
 
 
             <ion-list *ngSwitchCase="'favorite'">
-                <ion-item style="background-color: transparent; color: white !important;">
-                    <button color="danger" item-right ion-button>Kaldır</button>
-
-                </ion-item>
+                <div *ngFor="let item of favItems">
+                    <ion-item style="background-color: transparent; color: white !important;">
+                        <ion-thumbnail item-left>
+                            <img src="{{item.ImageUrl}}" style="border-radius: 10px;">
+                        </ion-thumbnail>
+                        <p item-left style="color: black;">{{item.Title}}</p>
+                        <button item-right style="right: 0 !important; left: 0 !important;" ion-button default color="danger"><ion-icon name="trash"></ion-icon></button>
+                    </ion-item>
+                </div>
             </ion-list>
 
         </div>

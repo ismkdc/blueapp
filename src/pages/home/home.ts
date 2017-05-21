@@ -31,7 +31,7 @@ public token = window.localStorage.getItem('raja');
    doRefresh(refresher) {
    this.getProducts();
     setTimeout(() => {
-     
+     refresher.cancel();
     }, 2000);
   }
   getProducts(){

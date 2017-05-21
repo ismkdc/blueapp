@@ -7,12 +7,13 @@ import {Http, Headers, RequestOptions } from '@angular/http';
   templateUrl: 'profile.html'
 })
 export class ProfilePage {
-public items:any;
+public sellingItems:any;
+public favItems:any;
 username:string;
 profilephoto:string;
+segment:string;
   constructor(public navCtrl: NavController, public http: Http,public loadingCtrl: LoadingController) {
-  
-  
+    this.segment = "selling";
   }
   ionViewDidLoad(){
     let loading = this.loadingCtrl.create({
@@ -25,8 +26,8 @@ this.http.get('http://tukasservice.azurewebsites.net/api/user/getinfo?token='+to
             	this.username = jsonData.Name;
               this.profilephoto = jsonData.ProfileImgUrl;
               console.log(jsonData);
-            	this.items = jsonData.SellingProducts;
-              console.log(this.items);
+            	this.sellingItems = jsonData.SellingProducts;
+              this.favItems = jsonData.FavoriteProducts;
               loading.dismiss();
             });
   }

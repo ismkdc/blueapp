@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { AuthService } from '../login/authservice';
 import { LoginPage } from "../login/login";
 
@@ -21,7 +21,7 @@ newcreds = {
            name: '',
            department: ''
         }
-  constructor(public navCtrl: NavController, public authservice: AuthService, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public authservice: AuthService, public alertCtrl: AlertController, public loadingCtrl: LoadingController) {
      
      
      
@@ -29,6 +29,10 @@ newcreds = {
   }
   
   register(user) {
+      let loading = this.loadingCtrl.create({
+    spinner: 'crescent'
+  });
+    loading.present();
         this.authservice.adduser(user).then(data => {
             if(data) {
                 var alert = this.alertCtrl.create({
@@ -38,19 +42,23 @@ newcreds = {
                 });
                 alert.present();
                 this.navCtrl.push(LoginPage);
+                loading.dismiss();
             }
             else{
+               loading.dismiss();
               var alert = this.alertCtrl.create({
                     title: 'Başarısız',
                     subTitle: 'Kullanıcı zaten kayıtlı!',
                     buttons: ['Tamam']
                 });
+               
                 alert.present();
+                
             }
     });
 }
 signin(){
-     this.navCtrl.push(LoginPage);
+     this.navCtrl.setRoot(LoginPage);
 }
 
   ionViewDidLoad() {
