@@ -15,11 +15,16 @@ public sellingItems:any;
 public favItems:any;
 username:string;
 profilephoto:string;
-ppDefault = "../assets/images/placeholder.png"
+ppDefault = "assets/images/placeholder.png"
   constructor(public navCtrl: NavController, public http: Http,public loadingCtrl: LoadingController, public actionSheetCtrl: ActionSheetController, public camera: Camera,public toastCtrl: ToastController,public authservice: AuthService,public alertCtrl:AlertController) {
    
   }
   ionViewDidLoad(){
+   
+  }
+
+  ionViewDidEnter()
+  {
     this.getData();
   }
   getData(){

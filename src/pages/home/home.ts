@@ -22,8 +22,11 @@ public token = window.localStorage.getItem('raja');
               loading.dismiss();
             });
   }
+   ionViewDidEnter()
+  {
+     this.getProducts();
+  }
   ionViewDidLoad() {
-    this.getProducts();
   }
 
 

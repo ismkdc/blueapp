@@ -13,7 +13,8 @@ public items:any;
   constructor(public navCtrl: NavController, public http: Http, public loadingCtrl: LoadingController) {
 
   }
-  ionViewDidLoad(){
+    ionViewDidEnter()
+  {
     let loading = this.loadingCtrl.create({
     spinner: 'crescent'
   });
@@ -36,5 +37,6 @@ this.http.get('http://tukasservice.azurewebsites.net/api/message/getconversation
             id: id
           });
   }
+
 
 }
