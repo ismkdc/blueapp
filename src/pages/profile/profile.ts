@@ -5,6 +5,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 import { AuthService } from "../login/authservice";
 import { LoginPage } from "../login/login";
 
+
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html'
@@ -235,7 +236,9 @@ this.http.get('http://tukasservice.azurewebsites.net/api/user/getinfo?token='+to
         role: 'destructive',
          handler: () => {
          this.authservice.logout();
-         this.navCtrl.parent.setRoot(LoginPage);
+        debugger;
+         this.navCtrl.parent.parent.setRoot(LoginPage);
+
          }
        },
        {
