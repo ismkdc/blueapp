@@ -11,7 +11,7 @@
                 </ion-col>
                 <ion-col center text-center item-center>
                     <ion-avatar item-center style="padding-top: 10%; ">
-                        <img src="{{ profilephoto }}">
+                        <img src="{{ profilephoto }}" (click)="changePp()">
                     </ion-avatar>
                     <h2 style="font-family: 'Helvetica'; color: white; ">{{ a }}</h2>
                     <p style="opacity: 0.9 !important;">{{ username }}</p>
@@ -24,7 +24,7 @@
                 </ion-col>
             </ion-row>
         </ion-item>
-        <ion-segment [(ngModel)]="segment" color="book" class="tabs">
+        <ion-segment [(ngModel)]="pet" color="book" class="tabs">
             <ion-segment-button value="selling">
                 <ion-icon name="cart"></ion-icon>
             </ion-segment-button>
@@ -35,7 +35,7 @@
         </ion-segment>
 
 
-        <div [ngSwitch]="selling">
+        <div [ngSwitch]="pet">
             <ion-list *ngSwitchDefault no-lines>
                 <div *ngFor="let item of sellingItems">
                     <ion-item style="background-color: transparent; color: white !important;">

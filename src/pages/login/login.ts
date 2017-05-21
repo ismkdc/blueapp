@@ -21,8 +21,8 @@ usercreds = {
         };
 
   constructor(public navCtrl: NavController, public authservice: AuthService,private Alert: AlertController,public loadingCtrl: LoadingController) {
-/*    window.localStorage.setItem('raja', 'f886a79bf8f8b8807fdf50efc8e062ee');
-        this.navCtrl.setRoot(TabsPage);*/
+  window.localStorage.setItem('raja', 'f886a79bf8f8b8807fdf50efc8e062ee');
+        this.navCtrl.setRoot(TabsPage);
        
   }
 
