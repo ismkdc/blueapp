@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController,ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { Sendproduct } from '../sendproduct/sendproduct';
 
 @Component({
   selector: 'page-camera',
@@ -12,7 +13,7 @@ export class CameraPage {
  public imageData: string;
 
 
-  constructor(public navCtrl: NavController, public camera: Camera) {
+  constructor(public navCtrl: NavController, public camera: Camera, public toastCtrl: ToastController) {
   
     this.current_image = "assets/images/photoholder.jpg";
   }
@@ -45,6 +46,7 @@ export class CameraPage {
 
                         return this.toBase64(newPath).then((base64Img) => {
                             this.current_image = base64Img;
+                            console.log(base64Img)
                             this.imageData = "data:image/jpeg;base64," + base64Img;
                         });
                     },
@@ -87,6 +89,21 @@ export class CameraPage {
         ctx.drawImage(img, 300, 500, width, height);
         return canvas.toDataURL("image/jpeg");
     }
+    nextPage(){
+        if(this.current_image != "assets/images/photoholder.jpg"){
+        this.navCtrl.push(Sendproduct,{
+            image: this.current_image
+        })
+    }
+    else{
+        let toast = this.toastCtrl.create({
+    message: 'Lütfen fotoğraf ekleyin !',
+    duration: 3000,
+    position: 'bottom'
+  }); 
+  toast.present();
+
+    }
+    }
 
 }
-

@@ -1,0 +1,33 @@
+<!--
+  Generated template for the Sendproduct page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+    <ion-navbar>
+        <ion-title>sendproduct</ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <ion-card>
+        <img src="{{image}}">
+    </ion-card>
+
+    <ion-item style="background: transparent;">
+        <ion-input [(ngModel)]="product.title" placeholder="Açıklama" style="color: black !important;"></ion-input>
+    </ion-item>
+    <ion-item style="background: transparent;">
+        <ion-input [(ngModel)]="product.price" style="color: black !important;" placeholder="Fiyat"></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+        <button ion-button item-right (click)="addProduct(product)">
+          Gönder
+        </button>
+    </ion-item>
+
+</ion-content>

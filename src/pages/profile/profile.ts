@@ -12,7 +12,10 @@ username:string;
 profilephoto:string;
   constructor(public navCtrl: NavController, public http: Http) {
   
-   var token =  window.localStorage.getItem('raja');
+  
+  }
+  ionViewDidLoad(){
+       var token =  window.localStorage.getItem('raja');
 this.http.get('http://tukasservice.azurewebsites.net/api/user/getinfo?token='+token).subscribe(data => {
               var jsonData = data.json();
             	this.username = jsonData.Name;

@@ -1,20 +1,27 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>Camera</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Camera</ion-title>
+        <ion-buttons right (click)="nextPage()">
+            <button ion-button small style="background: transparent;">
+              Devam <br>
+<ion-icon name="arrow-forward"></ion-icon>
+</button>
+        </ion-buttons>
+    </ion-navbar>
+
 </ion-header>
 <ion-content>
-  
-      <ion-card>
-              <img [src]="current_image" *ngIf="current_image" /> 
-      </ion-card>
-  
-  <p>
-    <button ion-button round icon-only block (click)="takePhoto()">
+
+    <ion-card>
+        <img style="max-width: 70%;" [src]="current_image" *ngIf="current_image" />
+    </ion-card>
+
+    <p>
+        <button ion-button round icon-only block (click)="takePhoto()">
       Fotoğraf Çek!
     </button>
-     <button ion-button round icon-only block (click)="pickImage()">
+        <button ion-button round icon-only block (click)="pickImage()">
       Galeriden Seç!
     </button>
-  </p>
+    </p>
 </ion-content>

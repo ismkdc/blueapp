@@ -20,6 +20,7 @@ import { Camera, CameraOptions } from '@ionic-native/camera';
 
 import { Message } from '../pages/message/message';
 import { MessageDetail } from '../pages/messagedetail/messagedetail';
+import { Sendproduct } from '../pages/sendproduct/sendproduct';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { MessageDetail } from '../pages/messagedetail/messagedetail';
     LoginPage,
     Signup,
     CameraPage,
+    Sendproduct
   ],
   imports: [
     BrowserModule,
@@ -48,7 +50,8 @@ import { MessageDetail } from '../pages/messagedetail/messagedetail';
     TabsPage,
     LoginPage,
     Signup,
-    CameraPage
+    CameraPage,
+    Sendproduct
   ],
   providers: [
     StatusBar,

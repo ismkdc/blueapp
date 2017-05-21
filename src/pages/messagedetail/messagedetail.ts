@@ -18,29 +18,21 @@ username:string;
 conId:number;
 messagetext:string;
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
-    if(this.navParams.get('username') != null)
-    {
-      this.username = this.navParams.get('username');
-      this.conId = this.navParams.get('id')*-1;
-    }
-    else
-    {
-      this.conId = this.navParams.get('id');
-      this.getmsg();
-    }
-     
+   
  
   }
   sendmsg()
   {
+
     var token =  window.localStorage.getItem('raja');
     
 this.http.get('http://tukasservice.azurewebsites.net/api/message/sendmessage?conId='+this.conId+'&token='+token+'&msg='+this.messagetext).subscribe(data => {
 
   this.conId = data.json().Result;
-
+  
   this.getmsg();
             });
+            this.messagetext = "";
   }
   getmsg()
   {
@@ -57,7 +49,17 @@ this.http.get('http://tukasservice.azurewebsites.net/api/message/getmessages?con
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Message');
+    if(this.navParams.get('username') != null)
+    {
+      this.username = this.navParams.get('username');
+      this.conId = this.navParams.get('id')*-1;
+    }
+    else
+    {
+      this.conId = this.navParams.get('id');
+      this.getmsg();
+    }
+     
   }
 
 }
