@@ -4,7 +4,7 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
-<ion-header>
+<!--<ion-header>
 
   <ion-navbar>
     <ion-title>Kayıt ol</ion-title>
@@ -38,4 +38,50 @@
 </ion-row>
   </ion-list>
   <button class="center" ion-button (click)="register(newcreds)">Kayıt Ol</button>
+</ion-content>
+-->
+
+<ion-content class="login-content" padding>
+    <ion-row class="logo-row">
+        <ion-col></ion-col>
+        <ion-col width-67>
+            <img src="assets/images/logo.png" />
+        </ion-col>
+        <ion-col></ion-col>
+    </ion-row>
+    <div class="login-box">
+        <form (ngSubmit)="register(newcreds)" #registerForm="ngForm">
+            <ion-row>
+                <ion-col>
+                    <ion-list inset>
+
+                        <ion-item>
+                            <ion-input type="text" placeholder="Email" name="email" [(ngModel)]="newcreds.email" required></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-input type="password" placeholder="Parola" name="password" [(ngModel)]="newcreds.password" required></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-input type="password" placeholder="Ad" name="name" [(ngModel)]="newcreds.name" required></ion-input>
+                        </ion-item>
+
+                        <ion-item>
+                            <ion-input type="password" placeholder="Bölüm" name="department" [(ngModel)]="newcreds.department" required></ion-input>
+                        </ion-item>
+
+                    </ion-list>
+                </ion-col>
+            </ion-row>
+
+            <ion-row>
+                <ion-col class="signup-col">
+                    <button ion-button class="submit-btn" full type="submit" [disabled]="!registerForm.form.valid">Kayıt ol</button>
+                    <button ion-button class="register-btn" block clear (click)="signin()">Giriş Yap</button>
+                </ion-col>
+            </ion-row>
+
+        </form>
+    </div>
 </ion-content>

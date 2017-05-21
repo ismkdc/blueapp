@@ -8,6 +8,10 @@
 </ion-header>
 
 <ion-content fullscreen>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Yenile" refreshingSpinner="circles" refreshingText="Yenileniyor...">
+        </ion-refresher-content>
+    </ion-refresher>
     <ion-card *ngFor="let item of items">
         <ion-item>
             <ion-avatar item-left>

@@ -12,12 +12,7 @@ public items;
 public token = window.localStorage.getItem('raja');
   constructor(public navCtrl: NavController,public http: Http, public loadingCtrl: LoadingController) {
       let loading = this.loadingCtrl.create({
-    spinner: 'crescent',
-    content: `
-      <div class="custom-spinner-container">
-        <div class="custom-spinner-box"></div>
-      </div>`
-    
+    spinner: 'crescent'
   });
     loading.present();
     this.http.get('http://tukasservice.azurewebsites.net/api/product/getproducts?token='+this.token).subscribe(data => {
@@ -28,6 +23,18 @@ public token = window.localStorage.getItem('raja');
             });
   }
   ionViewDidLoad() {
+    this.getProducts();
+  }
+
+
+  
+   doRefresh(refresher) {
+   this.getProducts();
+    setTimeout(() => {
+     
+    }, 2000);
+  }
+  getProducts(){
      this.http.get('http://tukasservice.azurewebsites.net/api/product/getproducts?token='+this.token).subscribe(data => {
             	
               console.log(data.json());

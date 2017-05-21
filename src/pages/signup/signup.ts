@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
-import {AuthService} from '../login/authservice';
+import { AuthService } from '../login/authservice';
+import { LoginPage } from "../login/login";
 
 
 /*
@@ -36,6 +37,7 @@ newcreds = {
                     buttons: ['Tamam']
                 });
                 alert.present();
+                this.navCtrl.push(LoginPage);
             }
             else{
               var alert = this.alertCtrl.create({
@@ -47,7 +49,9 @@ newcreds = {
             }
     });
 }
-
+signin(){
+     this.navCtrl.push(LoginPage);
+}
 
   ionViewDidLoad() {
     console.log('Hello Signup Page');

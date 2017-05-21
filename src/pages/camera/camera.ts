@@ -15,7 +15,7 @@ export class CameraPage {
 
   constructor(public navCtrl: NavController, public camera: Camera, public toastCtrl: ToastController) {
   
-    this.current_image = "assets/images/photoholder.jpg";
+    this.current_image = "assets/images/photoholder.png";
   }
 
   takePhoto() {
@@ -90,7 +90,7 @@ export class CameraPage {
         return canvas.toDataURL("image/jpeg");
     }
     nextPage(){
-        if(this.current_image != "assets/images/photoholder.jpg"){
+        if(this.current_image != "assets/images/photoholder.png"){
         this.navCtrl.push(Sendproduct,{
             image: this.current_image
         })

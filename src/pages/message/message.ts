@@ -15,12 +15,7 @@ public items:any;
   }
   ionViewDidLoad(){
     let loading = this.loadingCtrl.create({
-    spinner: 'crescent',
-    content: `
-      <div class="custom-spinner-container">
-        <div class="custom-spinner-box"></div>
-      </div>`
-    
+    spinner: 'crescent'
   });
     loading.present();
     var token =  window.localStorage.getItem('raja');
