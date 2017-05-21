@@ -235,7 +235,7 @@ this.http.get('http://tukasservice.azurewebsites.net/api/user/getinfo?token='+to
         role: 'destructive',
          handler: () => {
          this.authservice.logout();
-        this.navCtrl.setRoot(LoginPage);
+         this.navCtrl.parent.setRoot(LoginPage);
          }
        },
        {

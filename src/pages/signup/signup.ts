@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, LoadingController } from 'ionic-angular';
 import { AuthService } from '../login/authservice';
 import { LoginPage } from "../login/login";
+import { TabsPage } from '../tabs/tabs';
 
 
 /*
@@ -41,7 +42,15 @@ newcreds = {
                     buttons: ['Tamam']
                 });
                 alert.present();
-                this.navCtrl.push(LoginPage);
+                this.authservice.authenticate(user).then(data2 => {
+            if(data2) {
+                window.localStorage.setItem('username',this.newcreds.email);
+                window.localStorage.setItem('password',this.newcreds.password);
+                this.authservice.isLoggedin = true;
+                this.navCtrl.setRoot(TabsPage);
+                loading.dismiss();
+                
+            }});
                 loading.dismiss();
             }
             else{
